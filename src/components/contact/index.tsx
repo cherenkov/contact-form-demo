@@ -32,10 +32,10 @@ function ContanctIndex() {
   return (
     <>
       <Head title="お問い合わせフォーム" />
-      <div className="container mx-auto px-8 mt-8">
+      <div className="container mx-auto px-8 mt-8 mb-12">
         <div className="max-w-md mx-auto">
           <h1 className="text-2xl font-bold mb-6">お問い合わせフォーム</h1>
-          <div className="mb-6">
+          <div className="mb-8">
             <Stepper stepLabels={stepLabels} activeStep={activeStep} />
           </div>
           {getStepContent(activeStep)}
