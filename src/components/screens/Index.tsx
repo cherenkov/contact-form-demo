@@ -1,10 +1,10 @@
-import { useAuthState } from '~/components/contexts/UserContext'
-import { SignInButton } from '~/components/domain/auth/SignInButton'
-import { SignOutButton } from '~/components/domain/auth/SignOutButton'
-import { Head } from '~/components/shared/Head'
+import { useAuthState } from '~/components/contexts/UserContext';
+import { SignInButton } from '~/components/domain/auth/SignInButton';
+import { SignOutButton } from '~/components/domain/auth/SignOutButton';
+import { Head } from '~/components/shared/Head';
 
 function Index() {
-  const { state } = useAuthState()
+  const { state } = useAuthState();
 
   return (
     <>
@@ -28,7 +28,8 @@ function Index() {
               <a className="link link-primary" target="_blank" href="https://tailwindcss.com/" rel="noreferrer">
                 TailwindCSS
               </a>{' '}
-              Starter</h1>
+              Starter
+            </h1>
             <p className="mt-4 text-lg">
               For fast <b>prototyping</b>. Already set up{' '}
               <a
@@ -48,9 +49,15 @@ function Index() {
                 ESLint
               </a>
               ,{' '}
-              <a className="link link-primary" target="_blank" href="https://github.com/prettier/prettier" rel="noreferrer">
+              <a
+                className="link link-primary"
+                target="_blank"
+                href="https://github.com/prettier/prettier"
+                rel="noreferrer"
+              >
                 Prettier
-              </a>.
+              </a>
+              .
             </p>
             <div className="mt-4">
               {state.state === 'UNKNOWN' ? null : state.state === 'SIGNED_OUT' ? <SignInButton /> : <SignOutButton />}
@@ -59,7 +66,7 @@ function Index() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Index
+export default Index;

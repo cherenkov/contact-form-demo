@@ -1,4 +1,4 @@
-import { useAuthState } from '~/components/contexts/UserContext';
+// import { useAuthState } from '~/components/contexts/UserContext';
 import { Head } from '~/components/shared/Head';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
@@ -7,8 +7,8 @@ interface IFormInput {
   email: String;
 }
 
-function Index() {
-  const { state } = useAuthState();
+function FormPage() {
+  // const { state } = useAuthState();
   const {
     register,
     formState: { errors },
@@ -135,4 +135,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default FormPage;
