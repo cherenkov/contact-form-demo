@@ -151,7 +151,7 @@ const FormPage = ({ handleNext }: Props) => {
             </label>
             <select
               className="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              {...register('whichProduct', {})}
+              {...register('whichProduct')}
             >
               <option>---</option>
               <option>Aサービスについて</option>
@@ -211,8 +211,8 @@ const FormPage = ({ handleNext }: Props) => {
               <div className="mt-2 text-sm font-bold tracking-wide text-red-500">{errors.agree?.message}</div>
             )}
           </div>
-          <div className="mt-4">
-            <button type="submit" className="btn btn-primary">
+          <div className="grid grid-cols-1 mt-4">
+            <button type="submit" className="btn btn-primary text-lg">
               確認画面へ
             </button>
           </div>

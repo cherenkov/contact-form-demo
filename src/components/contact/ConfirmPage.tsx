@@ -17,19 +17,44 @@ const ConfirmPage = ({ handleBack, handleNext }: Props) => {
     console.log(currentState);
   };
 
+  const labels = [
+    { name: 'お名前(姓名)' },
+    { nameFurigana: 'ふりがな(姓名)' },
+    { organization: '会社名' },
+    { email: 'メールアドレス' },
+    { postalCode: '郵便番号' },
+    { address: 'ご住所' },
+    { tel: '電話番号' },
+    { whichProduct: 'どの製品について' },
+    { subject: 'お問い合わせ件名' },
+    { details: 'お問い合わせ内容' },
+    { agree: '個人情報の取り扱いについて' },
+  ];
+
   return (
     <>
-      <div>{currentState.name}</div>
-      <div>{currentState.nameFurigana}</div>
-      <div>{currentState.email}</div>
-      <div>{currentState.whichProduct}</div>
+      <div className="grid grid-cols-1 gap-8">
+        {labels.map((label, index) => {
+          const [key, val] = Object.entries(label)[0];
 
-      <button type="button" className="btn btn-outline btn-primary" onClick={onClickBack}>
-        戻る
-      </button>
-      <button type="button" className="btn btn-primary" onClick={onClickNext}>
-        送信する
-      </button>
+          return (
+            <div key={index}>
+              <label>
+                <span className="text-gray-700 font-bold">{val}</span>
+              </label>
+              <div className="mt-2 whitespace-pre-wrap">{key === 'agree' ? '同意する' : currentState[key]}</div>
+            </div>
+          );
+        })}
+        <div className="grid grid-cols-2 gap-8 mt-4">
+          <button type="button" className="btn btn-outline btn-primary text-lg" onClick={onClickBack}>
+            戻る
+          </button>
+          <button type="button" className="btn btn-primary text-lg" onClick={onClickNext}>
+            送信する
+          </button>
+        </div>
+      </div>
     </>
   );
 };
