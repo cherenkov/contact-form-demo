@@ -1,7 +1,6 @@
-// import { useAuthState } from '~/components/contexts/UserContext';
-
+import { useContext } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-
+import { FormCtx } from '~/components/contexts/FormContext';
 interface IFormInput {
   name: String;
   email: String;
@@ -12,14 +11,17 @@ type Props = {
 };
 
 const FormPage = ({ handleNext }: Props) => {
-  // const { state } = useAuthState();
+  const { currentState, setCurrentState } = useContext(FormCtx);
+
+  // react-hook-formによるバリデーションで使用
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<IFormInput>();
+
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
+    setCurrentState(data);
     handleNext();
   };
 
@@ -34,6 +36,7 @@ const FormPage = ({ handleNext }: Props) => {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               placeholder=""
               {...register('name', { required: '名前は必須です。' })}
+              defaultValue={currentState.name}
             />
           </label>
           {errors.name && <span className="text-sm font-bold tracking-wide text-red-500">{errors.name?.message}</span>}
@@ -51,6 +54,7 @@ const FormPage = ({ handleNext }: Props) => {
                   focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
                 "
               placeholder="john@example.com"
+              defaultValue={currentState.email}
               {...register('email', {
                 required: 'メールアドレスは必須です。',
                 pattern: {
@@ -122,7 +126,7 @@ const FormPage = ({ handleNext }: Props) => {
                 </div>
               </div> */}
           <div className="mt-4">
-            <button type="submit" className="btn btn-outline btn-primary">
+            <button type="submit" className="btn btn-primary">
               確認画面へ
             </button>
           </div>
