@@ -15,9 +15,6 @@ function ContanctIndex() {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-  const handleReset = () => {
-    setActiveStep(0);
-  };
 
   const getStepContent = (stepIndex: number) => {
     switch (stepIndex) {
@@ -31,16 +28,6 @@ function ContanctIndex() {
         return 'Unknown stepIndex';
     }
   };
-
-  // const { state } = useAuthState();
-  // const {
-  //   register,
-  //   formState: { errors },
-  //   handleSubmit,
-  // } = useForm<IFormInput>();
-  // const onSubmit: SubmitHandler<IFormInput> = (data) => {
-  //   console.log(data);
-  // };
 
   return (
     <>

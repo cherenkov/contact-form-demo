@@ -19,8 +19,10 @@ const ConfirmPage = ({ handleBack, handleNext }: Props) => {
 
   return (
     <>
-      <div>{currentState?.name}</div>
-      <div>{currentState?.email}</div>
+      <div>{currentState.name}</div>
+      <div>{currentState.nameFurigana}</div>
+      <div>{currentState.email}</div>
+      <div>{currentState.whichProduct}</div>
 
       <button type="button" className="btn btn-outline btn-primary" onClick={onClickBack}>
         戻る
