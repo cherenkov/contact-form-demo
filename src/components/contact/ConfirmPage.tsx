@@ -1,4 +1,4 @@
-import { FormEvent, useContext } from 'react';
+import { FormEvent, useContext, useEffect } from 'react';
 import { FormCtx } from '~/components/contexts/FormContext';
 import { useFunctions, useHttpsCallable } from '~/lib/firebase';
 
@@ -8,6 +8,12 @@ type Props = {
 };
 
 const ConfirmPage = ({ handleBack, handleNext }: Props) => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  });
+
   const { currentState } = useContext(FormCtx);
   const onClickBack = (e: FormEvent<HTMLButtonElement>): void => {
     handleBack();
