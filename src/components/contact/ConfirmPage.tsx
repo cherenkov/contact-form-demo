@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useEffect } from 'react';
+import { FormEvent, useContext, useEffect, useState } from 'react';
 import { FormCtx } from '~/components/contexts/FormContext';
 import { useFunctions, useHttpsCallable } from '~/lib/firebase';
 
@@ -8,6 +8,8 @@ type Props = {
 };
 
 const ConfirmPage = ({ handleBack, handleNext }: Props) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -19,6 +21,9 @@ const ConfirmPage = ({ handleBack, handleNext }: Props) => {
     handleBack();
   };
   const onClickNext = async (e: FormEvent<HTMLButtonElement>): Promise<void> => {
+    // ローディング開始
+    setIsLoading(true);
+
     try {
       console.log('送信されるデータ');
       console.log(currentState);
@@ -29,12 +34,17 @@ const ConfirmPage = ({ handleBack, handleNext }: Props) => {
 
       const sendMail = httpsCallable(functions, 'sendMail');
       await sendMail(currentState);
-      console.log('functions 成功');
 
+      // ローディング終了
+      setIsLoading(false);
+
+      console.log('functions 成功');
       handleNext();
     } catch (err) {
       console.log('functions 失敗');
       console.log(err);
+      // ローディング終了
+      setIsLoading(false);
     }
   };
 
@@ -54,6 +64,12 @@ const ConfirmPage = ({ handleBack, handleNext }: Props) => {
 
   return (
     <>
+      <div className={isLoading ? 'fixed flex justify-center items-center w-full h-full top-0 left-0' : 'hidden'}>
+        <div
+          style={{ borderTopColor: 'transparent' }}
+          className="w-16 h-16 border-4 border-blue-400 border-solid rounded-full animate-spin"
+        />
+      </div>
       <div className="grid grid-cols-1 gap-8">
         {labels.map((label, index) => {
           const [key, val] = Object.entries(label)[0];
