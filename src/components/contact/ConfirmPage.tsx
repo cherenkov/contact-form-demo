@@ -1,5 +1,6 @@
 import { FormEvent, useContext } from 'react';
 import { FormCtx } from '~/components/contexts/FormContext';
+import { useFunctions, useHttpsCallable } from '~/lib/firebase';
 
 type Props = {
   handleBack: Function;
@@ -11,10 +12,24 @@ const ConfirmPage = ({ handleBack, handleNext }: Props) => {
   const onClickBack = (e: FormEvent<HTMLButtonElement>): void => {
     handleBack();
   };
-  const onClickNext = (e: FormEvent<HTMLButtonElement>): void => {
-    handleNext();
-    console.log('送信されるデータ');
-    console.log(currentState);
+  const onClickNext = async (e: FormEvent<HTMLButtonElement>): Promise<void> => {
+    try {
+      console.log('送信されるデータ');
+      console.log(currentState);
+
+      const functions = useFunctions();
+      const httpsCallable = useHttpsCallable();
+      functions.region = 'asia-northeast1';
+
+      const sendMail = httpsCallable(functions, 'sendMail');
+      await sendMail(currentState);
+      console.log('functions 成功');
+
+      handleNext();
+    } catch (err) {
+      console.log('functions 失敗');
+      console.log(err);
+    }
   };
 
   const labels = [
