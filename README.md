@@ -4,11 +4,11 @@
 
 - 入力、確認、完了画面
 - バリデーション
-- 確認メール送信
+- 入力したメアドに確認メール送信
 
 ## Screenshot
 
-<img src="https://user-images.githubusercontent.com/30701/146385381-dc6b59da-778d-441b-8bbb-a1fe6be93f41.png" width="300">
+<img src="https://user-images.githubusercontent.com/30701/146396507-fda2905c-2c20-4f40-92d3-b14cb97fd598.png">
 
 ## 使用技術
 
@@ -60,6 +60,8 @@ VITE_FIREBASE_MEASUREMENTID=
 ```
 
 ## デプロイ
+
+`yarn build` or `npm run build` すると dist ディレクトリが生成されるのでそれをデプロイする
 
 `firebase deploy`
 
