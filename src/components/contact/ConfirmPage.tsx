@@ -77,17 +77,17 @@ const ConfirmPage = ({ handleBack, handleNext }: Props) => {
           return (
             <div key={index}>
               <label>
-                <span className="text-gray-700 font-bold">{val}</span>
+                <span className="label-text">{val}</span>
               </label>
               <div className="mt-2 whitespace-pre-wrap">{key === 'agree' ? '同意する' : currentState[key]}</div>
             </div>
           );
         })}
         <div className="grid grid-cols-2 gap-8 mt-4">
-          <button type="button" className="btn btn-outline btn-primary text-lg" onClick={onClickBack}>
+          <button type="button" className="btn btn-outline btn-primary btn-back text-lg" onClick={onClickBack}>
             戻る
           </button>
-          <button type="button" className="btn btn-primary text-lg" onClick={onClickNext}>
+          <button type="button" className="btn btn-primary btn-send text-lg" onClick={onClickNext}>
             送信する
           </button>
         </div>
