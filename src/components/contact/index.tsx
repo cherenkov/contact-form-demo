@@ -5,9 +5,8 @@ import ConfirmPage from '~/components/contact/ConfirmPage';
 import CompletePage from '~/components/contact/CompletePage';
 import Stepper from '~/components/shared/Stepper';
 
-const stepLabels = ['入力', '確認', '完了'];
-
-function ContanctIndex() {
+const ContanctIndex = () => {
+  const stepLabels = ['入力', '確認', '完了'];
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -43,6 +42,6 @@ function ContanctIndex() {
       </div>
     </>
   );
-}
+};
 
 export default ContanctIndex;

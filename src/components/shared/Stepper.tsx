@@ -5,7 +5,7 @@ type Props = {
 
 const Stepper = ({ stepLabels, activeStep }: Props) => {
   return (
-    <ul className="w-full steps">
+    <ul className="w-full steps" data-currentstep={activeStep}>
       {stepLabels.map((label, index) => (
         <li key={index} className={`step ${index <= activeStep ? 'step-primary' : ''}`}>
           {label}
